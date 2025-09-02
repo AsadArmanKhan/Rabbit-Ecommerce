@@ -5,7 +5,7 @@ import NavBar from "./NavBar";
 export default function Header() {
   return (
     <>
-      <header className="border-b border-gray-200 sticky top-0 left-0">
+      <header className="border-b bg-white border-gray-200 sticky top-0 left-0">
         {/* Topbar */}
         <TopBar />
         {/* Navbar  */}
