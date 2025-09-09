@@ -15,7 +15,7 @@ export default function NewArrivals() {
     {
       _id: "1",
       name: "Stylish Jacket",
-      price: "1200",
+      price: 1200,
       images: [
         {
           url: "https://picsum.photos/500/500?random=1",
@@ -127,6 +127,17 @@ export default function NewArrivals() {
   const handleMouseDown = (e) => {
     setIsDragging(true);
     setStartX(e.pageX - scrollRef.current.offsetLeft);
+    setScrollLeft(scrollRef.current.scrollLeft);
+  };
+  const handleMouseMove = (e) => {
+    if (!isDragging) return;
+
+    const x = e.pageX - scrollRef.current.offsetLeft;
+    const walk = x - startX;
+    scrollRef.current.scrollLeft = scrollLeft - walk;
+  };
+  const handleMouseUpOrLeave = () => {
+    setIsDragging(false);
   };
 
   const scroll = (direction) => {
@@ -149,6 +160,7 @@ export default function NewArrivals() {
       scrollLeft: container.scrollLeft,
       clientWidth: container.clientWidth,
       containerScrollWidth: container.scrollWidth,
+      offsetLeft: scrollRef.current.offsetLeft,
     });
   };
   useEffect(() => {
@@ -156,11 +168,12 @@ export default function NewArrivals() {
     if (container) {
       container.addEventListener("scroll", updateScrollButtons);
       updateScrollButtons();
+      return () => container.removeEventListener("scroll", updateScrollButtons);
     }
   }, []);
   return (
     <>
-      <section>
+      <section className=" py-16 px-4 lg:px-0">
         <div className=" container mx-auto text-center mb-10 relative">
           <h2 className=" mb-4 text-3xl font-bold">Explore New Arrivals</h2>
           <p className=" text-lg text-gray-600 mb-8">
@@ -201,12 +214,14 @@ export default function NewArrivals() {
         </div>
         {/* Scrollable Content */}
         <div
+          className={`container mx-auto overflow-x-scroll flex space-x-6 p-5  relative ${
+            isDragging ? "cursor-grabbing" : "cursor-grab"
+          }`}
           ref={scrollRef}
           onMouseDown={handleMouseDown}
           onMouseMove={handleMouseMove}
           onMouseUp={handleMouseUpOrLeave}
           onMouseLeave={handleMouseUpOrLeave}
-          className="container mx-auto overflow-x-scroll flex space-x-6 p-1  relative"
         >
           {newArrivals.map((product) => (
             <div
@@ -217,6 +232,7 @@ export default function NewArrivals() {
                 src={product.images[0]?.url}
                 className=" w-full h-[500px] object-cover rounded-lg "
                 alt={product.images[0]?.altText || product.name}
+                draggable="false"
               />
               <div className=" absolute bottom-0 left-0 right-0 bg-opacity-50 backdrop-blur-md text-white p-4 rounded-b-lg">
                 <Link to={`/product/${product._id}`} className="block">
