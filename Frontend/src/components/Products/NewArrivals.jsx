@@ -156,12 +156,12 @@ export default function NewArrivals() {
       setCanScrollRight(rightScrollable);
     }
 
-    console.log({
-      scrollLeft: container.scrollLeft,
-      clientWidth: container.clientWidth,
-      containerScrollWidth: container.scrollWidth,
-      offsetLeft: scrollRef.current.offsetLeft,
-    });
+    // console.log({
+    //   scrollLeft: container.scrollLeft,
+    //   clientWidth: container.clientWidth,
+    //   containerScrollWidth: container.scrollWidth,
+    //   offsetLeft: scrollRef.current.offsetLeft,
+    // });
   };
   useEffect(() => {
     const container = scrollRef.current;
