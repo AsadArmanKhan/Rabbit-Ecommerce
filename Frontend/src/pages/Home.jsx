@@ -5,6 +5,7 @@ import NewArrivals from "../components/Products/NewArrivals";
 import ProductDetails from "../components/Products/ProductDetails";
 import ProductGrid from "../components/Products/ProductGrid";
 import FeaturedCollection from "../components/Products/FeaturedCollection";
+import FeaturesSection from "../components/Products/FeaturesSection";
 
 export default function Home() {
   const placeholderProducts = [
@@ -32,30 +33,30 @@ export default function Home() {
       price: 1200,
       images: [{ url: "https://picsum.photos/500/500?random=53" }],
     },
-      {
-    _id: 5,
-    name: "Product 5",
-    price: 1200,
-    images:[{ url: "https://picsum.photos/500/500?random=59"}]
-  },
-  {
-    _id: 6,
-    name: "Product 6",
-    price: 1200,
-    images:[{ url: "https://picsum.photos/500/500?random=61"}]
-  },
-  {
-    _id: 7,
-    name: "Product 7",
-    price: 1200,
-    images:[{ url: "https://picsum.photos/500/500?random=22"}]
-  },
-  {
-    _id: 8,
-    name: "Product 8",
-    price: 1200,
-    images:[{ url: "https://picsum.photos/500/500?random=13"}]
-  },
+    {
+      _id: 5,
+      name: "Product 5",
+      price: 1200,
+      images: [{ url: "https://picsum.photos/500/500?random=59" }],
+    },
+    {
+      _id: 6,
+      name: "Product 6",
+      price: 1200,
+      images: [{ url: "https://picsum.photos/500/500?random=61" }],
+    },
+    {
+      _id: 7,
+      name: "Product 7",
+      price: 1200,
+      images: [{ url: "https://picsum.photos/500/500?random=22" }],
+    },
+    {
+      _id: 8,
+      name: "Product 8",
+      price: 1200,
+      images: [{ url: "https://picsum.photos/500/500?random=13" }],
+    },
   ];
 
   return (
@@ -80,7 +81,8 @@ export default function Home() {
           </h2>
           <ProductGrid products={placeholderProducts} />
         </div>
-        <FeaturedCollection/>
+        <FeaturedCollection />
+        <FeaturesSection />
       </div>
     </>
   );

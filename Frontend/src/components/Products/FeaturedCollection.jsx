@@ -5,9 +5,9 @@ export default function FeaturedCollection() {
   return (
     <>
       <section className=" py-16 px-4 lg:px-0">
-        <div className="container mx-auto flex-col-reverse lg:flex-row items-center bg-green-50 rounded-3xl">
+        <div className="container mx-auto flex flex-col-reverse lg:flex-row items-center bg-green-50 rounded-3xl">
           {/* Left Content */}
-          <div className=" lg w-1/2 p-8 text-center lg:text-left">
+          <div className=" lg:w-1/2 p-8 text-center lg:text-left">
             <h2 className=" text-lg font-semibold text-gray-700 mb-2">
               Comfort and Style
             </h2>
@@ -29,8 +29,9 @@ export default function FeaturedCollection() {
           {/* Right Content */}
           <div className="  lg:w-1/2">
             <img
+              className=" w-full h-full object-cover lg:rounded-tr-3xl lg:rounded-br-3xl"
               src="https://github.com/kushald/rabbit-assets/blob/main/assets/featured.webp?raw=true"
-              alt=""
+              alt="Featured Collection"
             />
           </div>
         </div>
