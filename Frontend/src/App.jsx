@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Toaster, toast } from "sonner";
 import UserLayout from "./components/Layout/UserLayout";
 import Home from "./pages/Home";
+import Login from "./pages/Login";
 export default function App() {
   return (
     <>
@@ -13,6 +14,7 @@ export default function App() {
           <Route path="/" element={<UserLayout />}>
             {" "}
             <Route index element={<Home />} />
+            <Route path="login" element={<Login />} />
           </Route>
           <Route>{/* Admin Layout */} </Route>
         </Routes>

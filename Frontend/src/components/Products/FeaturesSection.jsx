@@ -1,5 +1,9 @@
 import React from "react";
-import { HiArrowPathRoundedSquare, HiOutlineCreditCard, HiShoppingBag } from "react-icons/hi2";
+import {
+  HiArrowPathRoundedSquare,
+  HiOutlineCreditCard,
+  HiShoppingBag,
+} from "react-icons/hi2";
 
 export default function FeaturesSection() {
   return (
@@ -23,9 +27,7 @@ export default function FeaturesSection() {
             <div className=" p-4 rounded-full mb-4">
               <HiArrowPathRoundedSquare className="text-4xl" />
             </div>
-            <h4 className=" tracking-tighter mb-2 uppercase">
-              45 Days Return
-            </h4>
+            <h4 className=" tracking-tighter mb-2 uppercase">45 Days Return</h4>
             <p className=" text-gray-600 text-sm tracking-tighter">
               Money back guarantee
             </p>
@@ -35,11 +37,11 @@ export default function FeaturesSection() {
             <div className=" p-4 rounded-full mb-4">
               <HiOutlineCreditCard className="text-4xl" />
             </div>
-            <h4 className=" tracking-tighter mb-2">
-              FREE INTERNATIONAL SHIPPING
+            <h4 className=" tracking-tighter mb-2 uppercase">
+              secure checkout
             </h4>
             <p className=" text-gray-600 text-sm tracking-tighter">
-              On all orders over $100.00
+              100% secured checkout process
             </p>
           </div>
         </div>
