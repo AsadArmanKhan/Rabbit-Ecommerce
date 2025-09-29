@@ -5,6 +5,7 @@ import { Toaster, toast } from "sonner";
 import UserLayout from "./components/Layout/UserLayout";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
+import Register from "./pages/Register";
 export default function App() {
   return (
     <>
@@ -15,6 +16,7 @@ export default function App() {
             {" "}
             <Route index element={<Home />} />
             <Route path="login" element={<Login />} />
+            <Route path="register" element={<Register />} />
           </Route>
           <Route>{/* Admin Layout */} </Route>
         </Routes>
