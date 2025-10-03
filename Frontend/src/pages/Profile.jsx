@@ -16,7 +16,8 @@ export default function Profile() {
                 Logout
               </button>
             </div>
-            
+            {/* Right Section: Orders table */}
+            <div className="w-full md:h-2/3"></div>
           </div>
         </div>
       </div>
