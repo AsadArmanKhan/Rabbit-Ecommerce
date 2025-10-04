@@ -1,4 +1,5 @@
 import React from "react";
+import MyOrdersPage from "./MyOrdersPage";
 
 export default function Profile() {
   return (
@@ -17,7 +18,9 @@ export default function Profile() {
               </button>
             </div>
             {/* Right Section: Orders table */}
-            <div className="w-full md:h-2/3"></div>
+            <div className="w-full md:w-2/3 lg:w-3/4">
+              <MyOrdersPage />
+            </div>
           </div>
         </div>
       </div>
