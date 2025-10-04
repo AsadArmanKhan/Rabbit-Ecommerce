@@ -68,6 +68,28 @@ export default function MyOrdersPage() {
                 <th className="py-2 px-4 sm:py-3">Status</th>
               </tr>
             </thead>
+            <tbody className="">
+              {orders.length > 0 ? (
+                orders.map((order) => (
+                  <tr
+                    key={order._id}
+                    className="border-b border-gray-200 hover:border-gray-700 pointer"
+                  >
+                    <td className=" py-2 px-2 sm:py-4 sm:px-4">
+                      <img
+                        src={order.orderItems[0].image}
+                        alt={order.orderItems[0].name}
+                        className=" w-10 h-10 sm:w-12 object-cover rounded-lg"
+                      />
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <tr className="">
+                  <td colSpan={7} className="py-4 px-4 text-center text-gray-500">You have no Orders</td>
+                </tr>
+              )}
+            </tbody>
           </table>
         </div>
       </div>
