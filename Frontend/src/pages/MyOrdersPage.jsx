@@ -82,11 +82,17 @@ export default function MyOrdersPage() {
                         className=" w-10 h-10 sm:w-12 object-cover rounded-lg"
                       />
                     </td>
+                    <td className="py-2 px-2 sm:py-4 sm:px-4 font-medium text-gray-900 whitespace-nowrap">#{order._id}</td>
                   </tr>
                 ))
               ) : (
                 <tr className="">
-                  <td colSpan={7} className="py-4 px-4 text-center text-gray-500">You have no Orders</td>
+                  <td
+                    colSpan={7}
+                    className="py-4 px-4 text-center text-gray-500"
+                  >
+                    You have no Orders
+                  </td>
                 </tr>
               )}
             </tbody>
