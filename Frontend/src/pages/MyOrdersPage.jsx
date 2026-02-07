@@ -32,7 +32,7 @@ export default function MyOrdersPage() {
             },
           ],
           totalPrice: 100,
-          isPaid: true,
+          isPaid: false,
         },
         {
           _id: "34567",
@@ -57,7 +57,7 @@ export default function MyOrdersPage() {
         <h2 className="text-xl sm:text-2xl font-bold mb-6">My Orders</h2>
         <div className="relative shadow-md sm:rounded-lg overflow-hidden">
           <table className=" min-w-full text-left text-gray-500">
-            <thead className=" bg-gray-100 uppercase text-sm text-gray-700">
+            <thead className=" bg-gray-100 uppercase text-sm text-gray-700 text-center">
               <tr className="">
                 <th className="py-2 px-4 sm:py-3">Image</th>
                 <th className="py-2 px-4 sm:py-3">Order ID</th>
@@ -68,7 +68,7 @@ export default function MyOrdersPage() {
                 <th className="py-2 px-4 sm:py-3">Status</th>
               </tr>
             </thead>
-            <tbody className="">
+            <tbody className="text-center">
               {orders.length > 0 ? (
                 orders.map((order) => (
                   <tr
@@ -84,6 +84,28 @@ export default function MyOrdersPage() {
                     </td>
                     <td className="py-2 px-2 sm:py-4 sm:px-4 font-medium text-gray-900 whitespace-nowrap">
                       #{order._id}
+                    </td>
+                    <td className=" py-2 px-2 sm:px-4 sm:py-4">
+                      {new Date(order.createdAt).toLocaleDateString()}
+                      {"   "}
+                      {new Date(order.createdAt).toLocaleTimeString()}
+                    </td>
+                    <td className=" py-2 px-2 sm:px-4 sm:py-4">
+                      {" "}
+                      {order.shippingAddress
+                        ? `${order.shippingAddress.city},${order.shippingAddress.country}`
+                        : "N/A"}{" "}
+                    </td>
+                    <td className=" py-2 px-2 sm:px-4 sm:py-4">
+                      {order.orderItems.length}
+                    </td>
+                    <td className=" py-2 px-2 sm:px-4 sm:py-4">
+                      {order.totalPrice}
+                    </td>
+                    <td
+                      className={`${order.isPaid ? "bg-white text-green-700 text-l font-bold" : "font-bold bg-white text-red-700 text-l"}`}
+                    >
+                      {order.isPaid ? "Paid" : "Pending"}
                     </td>
                   </tr>
                 ))
