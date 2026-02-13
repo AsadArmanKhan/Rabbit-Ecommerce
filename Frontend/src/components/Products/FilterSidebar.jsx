@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
 export default function FilterSidebar() {
@@ -49,5 +49,21 @@ export default function FilterSidebar() {
     "ChicStyle",
   ];
   const genders = ["Men", "Women"];
+
+  useEffect(() => {
+    const params = Object.fromEntries([...searchParams]);
+
+    setFilters({
+      category: params.category || "",
+      gender: params.gender || "",
+      color: params.color || "",
+      size: params.size ? params.size.split(",") : [],
+      material: params.material ? params.material.split(",") : [],
+      brand: params.brand ? params.brand.split(",") : [],
+      minPrice: params.minPrice || 0,
+      maxPrice: params.maxPrice || 100,
+    });
+    setPriceRange([0, params.maxPrice || 100]);
+  }, [searchParams]);
   return <div>FilterSidebar</div>;
 }
