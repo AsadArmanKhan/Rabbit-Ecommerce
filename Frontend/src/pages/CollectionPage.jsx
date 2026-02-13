@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { FaFilter } from "react-icons/fa";
 import FilterSidebar from "../components/Products/FilterSidebar";
+import SortOptions from "../components/Products/SortOptions";
+import ProductGrid from "../components/Products/ProductGrid";
 
 export default function CollectionPage() {
   const [products, setProducts] = useState([]);
@@ -9,7 +11,7 @@ export default function CollectionPage() {
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
-  const handleClickOutside = (e) => {
+  const handleClickOutside = () => {
     if (sidebarRef.current && !sidebarRef.current.contains(e.target)) {
       setIsSidebarOpen(false);
     }
@@ -86,14 +88,18 @@ export default function CollectionPage() {
       {/* Filter Sidebar */}
       <div
         ref={sidebarRef}
-        className={`${isSidebarOpen ? "translate-x-0" : "-translate-full"} 
+        className={`${isSidebarOpen ? "translate-x-0" : "-translate-x-full"} 
         fixed insert-y-0 left-0 w-64 bg-white overflow-y-auto transition-transform duration-300 
         z-50 lg:static lg:translate-x-0`}
       >
         <FilterSidebar />
       </div>
       <div className="flex-grow p-4">
-        <div className=" text-2xl uppercase mb-4">All Collection</div>
+        <h2 className=" text-2xl uppercase mb-4">All Collection</h2>
+        {/* Sort Options */}
+        <SortOptions />
+        {/* Products grid */}
+        <ProductGrid products={products} />
       </div>
     </div>
   );
