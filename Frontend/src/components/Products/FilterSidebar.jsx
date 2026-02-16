@@ -84,6 +84,42 @@ export default function FilterSidebar() {
           </div>
         ))}
       </div>
+      <div className="mb-6">
+        <label htmlFor="" className="font-medium mb-2 block text-gray-600">
+          Gender
+        </label>
+        {genders.map((gender) => (
+          <div key={gender} className="flex items-center mb-1">
+            <input
+              type="radio"
+              name="gender"
+              className=" mr-2 h-4 w-4 text-blue-500 focus:ring-blue-800 border-gray-800"
+            />
+            {gender}
+          </div>
+        ))}
+      </div>
+      {/* Color Section */}
+      <div className="mb-6 ">
+        <label className=" block text-gray-600 font-medium mb-2">Color</label>
+        <div className="flex flex-wrap gap-2">
+          {colors.map((color) => (
+            <button
+              key={color}
+              className=" w-8 h-8 rounded-full border border-gray-300 pointer transition hover:scale-105"
+              style={{ backgroundColor: color.toLocaleLowerCase() }}
+            ></button>
+          ))}
+        </div>
+      </div>
+      {/*Size filter */}
+      <div className="mb-6">
+        <label htmlFor="" className="block text-gray-600 font-medium mb-2"> Sizes 
+          {sizes.map((size) => (
+            <div className="pointer w-8 h-8 hover:text-gray-800  text-sm bg-gray-300 border border-gray-100 mb-2 rounded text-center pt-1 font-serif ">{size}</div>
+          ))}
+        </label>
+      </div>
     </div>
   );
 }
