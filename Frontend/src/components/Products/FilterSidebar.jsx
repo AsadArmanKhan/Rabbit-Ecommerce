@@ -116,7 +116,9 @@ export default function FilterSidebar() {
       <div className="mb-6">
         <label htmlFor="" className="block text-gray-600 font-medium mb-2"> Sizes 
           {sizes.map((size) => (
-            <div className="pointer w-8 h-8 hover:text-gray-800  text-sm bg-gray-300 border border-gray-100 mb-2 rounded text-center pt-1 font-serif ">{size}</div>
+            <input type="checkbox" name="size" className="mr-2 h-2 w-4 text-blue-500 focus:ring-blue-400 border-gray-300">
+              <span className="text-gray-700"></span>
+            </input>
           ))}
         </label>
       </div>
