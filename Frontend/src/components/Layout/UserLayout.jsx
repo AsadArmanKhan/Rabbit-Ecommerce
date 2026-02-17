@@ -8,9 +8,7 @@ export default function UserLayout() {
   return (
     <>
       {/* Header */}
-      <Header />
-
-      
+      <Header />  
       {/* Main Content */}
       <main>
         <Outlet />

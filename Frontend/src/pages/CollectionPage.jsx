@@ -11,7 +11,7 @@ export default function CollectionPage() {
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
-  const handleClickOutside = () => {
+  const handleClickOutside = (e) => {
     if (sidebarRef.current && !sidebarRef.current.contains(e.target)) {
       setIsSidebarOpen(false);
     }
