@@ -90,7 +90,7 @@ export default function CollectionPage() {
         ref={sidebarRef}
         className={`${isSidebarOpen ? "translate-x-0" : "-translate-x-full"} 
         fixed insert-y-0 left-0 w-64 bg-white overflow-y-auto transition-transform duration-300 
-        z-50 lg:static lg:translate-x-0`}
+        z-40 lg:static lg:translate-x-0`}
       >
         <FilterSidebar />
       </div>

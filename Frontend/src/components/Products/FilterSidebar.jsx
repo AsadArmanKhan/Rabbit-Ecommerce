@@ -114,20 +114,65 @@ export default function FilterSidebar() {
       </div>
       {/*Size filter */}
       <div className="mb-6">
+        <label className="block text-gray-600 font-medium mb-2"> </label>
+        Sizes
+        {sizes.map((size) => (
+          <div key={size} className="flex items-center mb-1">
+            <input
+              type="checkbox"
+              name="size"
+              className="mr-2 h-4 w-4 text-blue-500 focus:ring-blue-400 border-gray-300"
+            />
+            <span className="text-gray-700">{size}</span>
+          </div>
+        ))}
+      </div>
+      {/*Material  filter */}
+      <div className="mb-6">
         <label className="block text-gray-600 font-medium mb-2">
           {" "}
-          Sizes
-          {sizes.map((size) => (
-            <div key={size} className="flex items-center mb-1">
-              <input
-                type="checkbox"
-                name="size"
-                className="mr-2 h-4 w-4 text-blue-500 focus:ring-blue-400 border-gray-300"
-              />
-              <span className="text-gray-700">{size}</span>
-            </div>
-          ))}
+          Materials
         </label>
+        {materials.map((material) => (
+          <div key={material} className="flex items-center mb-1">
+            <input
+              type="checkbox"
+              name="size"
+              className="mr-2 h-4 w-4 text-blue-500 focus:ring-blue-400 border-gray-300"
+            />
+            <span className="text-gray-700">{material}</span>
+          </div>
+        ))}
+      </div>
+      {/*Brand filter */}
+      <div className="mb-6">
+        <label className="block text-gray-600 font-medium mb-2"> Brands</label>
+        {brands.map((brand) => (
+          <div key={brand} className="flex items-center mb-1">
+            <input
+              type="checkbox"
+              name="size"
+              className="mr-2 h-4 w-4 text-blue-500 focus:ring-blue-400 border-gray-300"
+            />
+            <span className="text-gray-700">{brand}</span>
+          </div>
+        ))}
+      </div>
+      <div className="mb-8">
+        <label htmlFor="" className="block text-gray-600 font-medium mb-2">
+          Price range
+        </label>
+        <input
+          type="range"
+          name="priceRange"
+          min={0}
+          max={100}
+          className="w-full h-2 bg-gray-300 rounded-lg appearance-none pointer"
+        />
+        <div className="flex justify-between text-gray-600 mt-2">
+          <span className="">$0</span>
+          <span className="">${priceRange[1]}</span>
+        </div>
       </div>
     </div>
   );
