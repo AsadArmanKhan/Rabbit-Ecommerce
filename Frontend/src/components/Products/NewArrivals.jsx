@@ -145,13 +145,12 @@ export default function NewArrivals() {
     scrollRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
   };
   // { //   Update Scroll Buttons   // }
-  const updateScrollButtons = () => {
+  function updateScrollButtons() {
     const container = scrollRef.current;
 
     if (container) {
       const leftScroll = container.scrollLeft;
-      const rightScrollable =
-        container.scrollWidth > leftScroll + container.clientWidth;
+      const rightScrollable = container.scrollWidth > leftScroll + container.clientWidth;
       setCanSCrollLeft(leftScroll > 0);
       setCanScrollRight(rightScrollable);
     }
@@ -162,7 +161,7 @@ export default function NewArrivals() {
     //   containerScrollWidth: container.scrollWidth,
     //   offsetLeft: scrollRef.current.offsetLeft,
     // });
-  };
+  }
   useEffect(() => {
     const container = scrollRef.current;
     if (container) {

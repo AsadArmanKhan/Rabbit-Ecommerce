@@ -65,6 +65,33 @@ export default function FilterSidebar() {
     });
     setPriceRange([0, params.maxPrice || 100]);
   }, [searchParams]);
+
+  const handleFilterChange = (e) => {
+    const { name, value, checked, type } = e.target;
+    console.log({ name, value, type, checked });
+    let newFilters = { ...filters };
+    // console.log(newFilters);
+
+    if (type === "checkbox") {
+      if (checked) {
+        newFilters[name] = [...(newFilters[name] || []), value];
+      } else {
+        newFilters[name] = newFilters[name].filter((item) => item !== value);
+      }
+    } else {
+      newFilters[name] = value;
+    }
+    setFilters(newFilters);
+    console.log(newFilters);
+  };
+  const updateUrlParams = (newFilters) => {
+    const params = new URLSearchParams();
+    Object.keys(newFilters).forEach((key) => {
+      if (Array.isArray(newFilters[key]) && newFilters[key].length > 0) {
+        params.append(key);
+      }
+    });
+  };
   return (
     <div className="p-4">
       <h3 className="text-xl font-medium text-gray-800 mb-4">Filter</h3>
@@ -78,6 +105,8 @@ export default function FilterSidebar() {
             <input
               type="radio"
               name="category"
+              value={category}
+              onChange={handleFilterChange}
               className=" mr-2 h-4 w-4 text-blue-500 focus:ring-blue-800 border-gray-800"
             />
             {category}
@@ -93,6 +122,8 @@ export default function FilterSidebar() {
             <input
               type="radio"
               name="gender"
+              value={gender}
+              onChange={handleFilterChange}
               className=" mr-2 h-4 w-4 text-blue-500 focus:ring-blue-800 border-gray-800"
             />
             {gender}
@@ -106,6 +137,8 @@ export default function FilterSidebar() {
           {colors.map((color) => (
             <button
               key={color}
+              value={color}
+              onClick={handleFilterChange}
               className=" w-8 h-8 rounded-full border border-gray-300 pointer transition hover:scale-105"
               style={{ backgroundColor: color.toLocaleLowerCase() }}
             ></button>
@@ -121,6 +154,8 @@ export default function FilterSidebar() {
             <input
               type="checkbox"
               name="size"
+              value={size}
+              onChange={handleFilterChange}
               className="mr-2 h-4 w-4 text-blue-500 focus:ring-blue-400 border-gray-300"
             />
             <span className="text-gray-700">{size}</span>
@@ -138,6 +173,8 @@ export default function FilterSidebar() {
             <input
               type="checkbox"
               name="size"
+              value={material}
+              onChange={handleFilterChange}
               className="mr-2 h-4 w-4 text-blue-500 focus:ring-blue-400 border-gray-300"
             />
             <span className="text-gray-700">{material}</span>
@@ -152,6 +189,8 @@ export default function FilterSidebar() {
             <input
               type="checkbox"
               name="size"
+              value={brand}
+              onChange={handleFilterChange}
               className="mr-2 h-4 w-4 text-blue-500 focus:ring-blue-400 border-gray-300"
             />
             <span className="text-gray-700">{brand}</span>
@@ -165,6 +204,7 @@ export default function FilterSidebar() {
         <input
           type="range"
           name="priceRange"
+          // value={}
           min={0}
           max={100}
           className="w-full h-2 bg-gray-300 rounded-lg appearance-none pointer"
