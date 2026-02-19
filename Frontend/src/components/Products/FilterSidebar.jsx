@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 export default function FilterSidebar() {
   const [searchParams, setSearchParams] = useSearchParams();
-
+  const navigate = useNavigate();
   const [filters, setFilters] = useState({
     category: "",
     gender: "",
@@ -84,13 +84,15 @@ export default function FilterSidebar() {
     setFilters(newFilters);
     console.log(newFilters);
   };
-  const updateUrlParams = (newFilters) => {
+  const updateURLParams = (newFilters) => {
     const params = new URLSearchParams();
     Object.keys(newFilters).forEach((key) => {
       if (Array.isArray(newFilters[key]) && newFilters[key].length > 0) {
-        params.append(key);
+        params.append(key, newFilters[key]);
       }
     });
+    setSearchParams(params);
+    navigate(`?${params.toString()}`)
   };
   return (
     <div className="p-4">
