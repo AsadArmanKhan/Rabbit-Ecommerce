@@ -3,12 +3,6 @@ import { IoMdClose } from "react-icons/io";
 import CartContents from "../Cart/CartContents";
 
 export default function CartDrawer({ drawerOpen, toggleCartDrawer }) {
-  //   const [drawerOpen, setDrawerOpen] = useState(false);
-
-  //   const toggleCartDrawer = () => {
-  //     setDrawerOpen(!drawerOpen);
-  //   };
-
   return (
     <>
       <div

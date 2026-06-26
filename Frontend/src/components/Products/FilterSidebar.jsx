@@ -141,7 +141,7 @@ export default function FilterSidebar() {
               key={color}
               value={color}
               onClick={handleFilterChange}
-              className=" w-8 h-8 rounded-full border border-gray-300 pointer transition hover:scale-105"
+              className="w-8 h-8 rounded-full border border-gray-300 pointer transition hover:scale-105"
               style={{ backgroundColor: color.toLocaleLowerCase() }}
             ></button>
           ))}
