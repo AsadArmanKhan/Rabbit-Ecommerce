@@ -76,7 +76,7 @@ export default function FilterSidebar() {
       if (checked) {
         newFilters[name] = [...(newFilters[name] || []), value];
       } else {
-        newFilters[name] = newFilters[name].filter((item) => item !== value);
+        newFiltes[name] = newFilters[name].filter((item) => item !== value);
       }
     } else {
       newFilters[name] = value;
@@ -139,6 +139,7 @@ export default function FilterSidebar() {
           {colors.map((color) => (
             <button
               key={color}
+              name="color"
               value={color}
               onClick={handleFilterChange}
               className="w-8 h-8 rounded-full border border-gray-300 pointer transition hover:scale-105"
