@@ -68,31 +68,32 @@ export default function FilterSidebar() {
 
   const handleFilterChange = (e) => {
     const { name, value, checked, type } = e.target;
-    console.log({ name, value, type, checked });
     let newFilters = { ...filters };
-    // console.log(newFilters);
 
     if (type === "checkbox") {
       if (checked) {
         newFilters[name] = [...(newFilters[name] || []), value];
       } else {
-        newFiltes[name] = newFilters[name].filter((item) => item !== value);
+        newFilters[name] = newFilters[name].filter((item) => item !== value); // fixed typo
       }
     } else {
       newFilters[name] = value;
     }
+
     setFilters(newFilters);
-    console.log(newFilters);
+    updateURLParams(newFilters); // <-- this call was missing
   };
   const updateURLParams = (newFilters) => {
     const params = new URLSearchParams();
     Object.keys(newFilters).forEach((key) => {
-      if (Array.isArray(newFilters[key]) && newFilters[key].length > 0) {
-        params.append(key, newFilters[key]);
+      const val = newFilters[key];
+      if (Array.isArray(val) && val.length > 0) {
+        params.append(key, val.join(","));
+      } else if (!Array.isArray(val) && val) {
+        params.append(key, val);
       }
     });
     setSearchParams(params);
-    navigate(`?${params.toString()}`)
   };
   return (
     <div className="p-4">
@@ -108,6 +109,7 @@ export default function FilterSidebar() {
               type="radio"
               name="category"
               value={category}
+              checked={filters.category === category}
               onChange={handleFilterChange}
               className=" mr-2 h-4 w-4 text-blue-500 focus:ring-blue-800 border-gray-800"
             />
@@ -125,6 +127,7 @@ export default function FilterSidebar() {
               type="radio"
               name="gender"
               value={gender}
+              checked={filters.gender === gender}
               onChange={handleFilterChange}
               className=" mr-2 h-4 w-4 text-blue-500 focus:ring-blue-800 border-gray-800"
             />
@@ -142,8 +145,12 @@ export default function FilterSidebar() {
               name="color"
               value={color}
               onClick={handleFilterChange}
-              className="w-8 h-8 rounded-full border border-gray-300 pointer transition hover:scale-105"
-              style={{ backgroundColor: color.toLocaleLowerCase() }}
+              className={`w-8 h-8 rounded-full border transition hover:scale-105 ${
+                filters.color === color
+                  ? "ring-2 ring-offset-2 ring-blue-500 border-blue-500"
+                  : "border-gray-300"
+              }`}
+              style={{ backgroundColor: color.toLowerCase() }}
             ></button>
           ))}
         </div>
@@ -158,6 +165,7 @@ export default function FilterSidebar() {
               type="checkbox"
               name="size"
               value={size}
+              checked={filters.size.includes(size)}
               onChange={handleFilterChange}
               className="mr-2 h-4 w-4 text-blue-500 focus:ring-blue-400 border-gray-300"
             />
@@ -175,8 +183,9 @@ export default function FilterSidebar() {
           <div key={material} className="flex items-center mb-1">
             <input
               type="checkbox"
-              name="size"
+              name="material"
               value={material}
+              checked={filters.material.includes(material)}
               onChange={handleFilterChange}
               className="mr-2 h-4 w-4 text-blue-500 focus:ring-blue-400 border-gray-300"
             />
@@ -191,8 +200,9 @@ export default function FilterSidebar() {
           <div key={brand} className="flex items-center mb-1">
             <input
               type="checkbox"
-              name="size"
+              name="brand"
               value={brand}
+              checked={filters.brand.includes(brand)}
               onChange={handleFilterChange}
               className="mr-2 h-4 w-4 text-blue-500 focus:ring-blue-400 border-gray-300"
             />
