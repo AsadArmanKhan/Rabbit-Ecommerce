@@ -19,6 +19,10 @@ export default function CollectionPage() {
   useEffect(() => {
     // Add EventListner for clicks
     document.addEventListener("mousedown", handleClickOutside);
+    // clean event listener
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
   }, []);
 
   useEffect(() => {
