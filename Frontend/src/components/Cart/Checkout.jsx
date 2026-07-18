@@ -71,6 +71,35 @@ export default function Checkout() {
                 required
               />
             </div>
+            <div className="">
+              <label className="block text-gray-700">Last Name</label>
+              <input
+                type="text"
+                value={ShippingAddress.LastName}
+                onChange={(e) =>
+                  setShippindAddress({
+                    ...ShippingAddress,
+                    lastName: e.target.value,
+                  })
+                }
+                className="w-full border rounded p-2"
+                required
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block text-gray-700">Address</label>
+              <input
+                type="text"
+                value={ShippingAddress.address}
+                onChange={(e) =>
+                  setShippindAddress({
+                    ...ShippingAddress,
+                    address: e.target.value,
+                  })
+                }
+                className="w-full p-2 border rounded"
+              />
+            </div>
           </div>
         </form>
       </div>
